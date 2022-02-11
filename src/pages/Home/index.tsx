@@ -5,7 +5,6 @@ import { ProductList } from './styles';
 import { api } from '../../services/api';
 import { formatPrice } from '../../util/format';
 import { useCart } from '../../hooks/useCart';
-import { Product as ProductCart } from '../../types'
 interface Product {
   id: number;
   title: string;
@@ -31,7 +30,7 @@ const Home = (): JSX.Element => {
   }, {} as CartItemsAmount)
 
   useEffect(() => {
-    async function loadProducts() {
+    function loadProducts() {
       api.get('/products').then((response) => setProducts((oldState) => response.data))
     }
 
